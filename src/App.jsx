@@ -7,10 +7,6 @@ import { Toaster } from 'react-hot-toast';
 import { GoogleOAuthProvider } from '@react-oauth/google'
 import { useUserStore } from './utils/authService';
 import AISPRoute from './routes/AISPRoute'
-import AISRoute from './routes/AISRoute'
-import AMSRoute from './routes/AMSRoute'
-import AMSPRoute from './routes/AMSPRoute'
-import FMSRoute from './routes/FMSRoute'
 import EVSRoute from './routes/EVSRoute'
 import PrintRoute from './routes/PrintRoute'
 import Loader from './components/Loader';
@@ -31,16 +27,8 @@ function App() {
       element: isAuthenticated() ? <Outlet/> : <Navigate to={{ pathname:'/login'}} replace />,
       children:[
          { path: "dash", element: user?.user?.group_id == 1 ? <Navigate to={{ pathname:'/evs/dash'}} replace /> : user?.user?.group_id == 3 ? <Navigate to={{ pathname:'/amsp/dash' }} replace /> : <Suspense fallback={<Loader/>}><Home /></Suspense> },
-         /* ADMISSION PORTAL ROUTE */
-         {...AMSPRoute },
          /* STUDENT PORTAL ROUTE */
          {...AISPRoute },
-         /* ADMISSION SYSTEM ROUTE */
-         {...AMSRoute },
-         /* ACADEMIC SYSTEM ROUTE */
-         {...AISRoute },
-         /* FINANCE SYSTEM ROUTE */
-         {...FMSRoute },
          /* ELECTA SYSTEM ROUTE */
          {...EVSRoute },
          /* PRINT LAYOUT & ROUTE */
