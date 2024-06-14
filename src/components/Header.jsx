@@ -1,5 +1,5 @@
 import React from 'react'
-import Logo from '../assets/img/logo_sso.png'
+import Logo from '../assets/img/logo.png'
 import { useNavigate } from 'react-router';
 import { MdLogout, MdSpaceDashboard } from 'react-icons/md';
 import { Link } from 'react-router-dom';

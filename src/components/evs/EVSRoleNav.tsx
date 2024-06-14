@@ -3,7 +3,7 @@ import { Menu } from '@headlessui/react'
 import { CgMenuGridO } from "react-icons/cg";
 import { FaChartBar } from 'react-icons/fa';
 import { GrDashboard } from 'react-icons/gr';
-import AISNavItem from '../ais/AISNavItem';
+import AISNavItem from '../evs/EVSNavItem';
 type Props = {
   user: any;
 }

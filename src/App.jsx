@@ -6,9 +6,7 @@ const Home = lazy(() => import('./pages/Home'));
 import { Toaster } from 'react-hot-toast';
 import { GoogleOAuthProvider } from '@react-oauth/google'
 import { useUserStore } from './utils/authService';
-import AISPRoute from './routes/AISPRoute'
 import EVSRoute from './routes/EVSRoute'
-import PrintRoute from './routes/PrintRoute'
 import Loader from './components/Loader';
 
 const { REACT_APP_GOOGLE_CLIENT_ID } = import.meta.env;
@@ -27,12 +25,7 @@ function App() {
       element: isAuthenticated() ? <Outlet/> : <Navigate to={{ pathname:'/login'}} replace />,
       children:[
          { path: "dash", element: user?.user?.group_id == 1 ? <Navigate to={{ pathname:'/evs/dash'}} replace /> : user?.user?.group_id == 3 ? <Navigate to={{ pathname:'/amsp/dash' }} replace /> : <Suspense fallback={<Loader/>}><Home /></Suspense> },
-         /* STUDENT PORTAL ROUTE */
-         {...AISPRoute },
-         /* ELECTA SYSTEM ROUTE */
          {...EVSRoute },
-         /* PRINT LAYOUT & ROUTE */
-         {...PrintRoute },
       ]
     },
     

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import PageTitle from '../../components/ais/PageTitle'
+import PageTitle from '../../components/evs/PageTitle'
 import Service from '../../utils/evsService'
 import { redirect, useLoaderData } from 'react-router'
 import ElectionListView from '../../components/evs/ElectionListView'

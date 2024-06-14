@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 // @ts-ignore
 // import Logo from '../assets/img/logo_portalbr_.png'
-import Logo from '../assets/img/logo_sso.png'
+import Logo from '../assets/img/logo.png'
 // @ts-ignore
 // import Adinkra from '../assets/img/adinkra-bullet.png'
 import Adinkra from '../assets/img/logo/mlk/logo.png'
@@ -91,7 +91,7 @@ function Login() {
                 <ul className="space-y-4 text-white">
                     <li className="flex items-center space-x-4">
                         <img src={Adinkra2} alt="" className="h-4"/>
-                        <span className="text-[1.1rem] font-semibold">ELECTA System - An Online Voting Platform</span>
+                        <span className="text-[1.1rem] font-semibold">Online Elections Platform</span>
                     </li>
                    
                    {/* <li className="flex items-center space-x-2">
