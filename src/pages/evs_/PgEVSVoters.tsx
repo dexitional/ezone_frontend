@@ -2,8 +2,7 @@ import React from 'react'
 import Service from '../../utils/aisService'
 import { useLoaderData } from 'react-router';
 import { BsActivity } from 'react-icons/bs';
-import AISStudentCard from '../../components/ais/AISStudentCard';
-import EVSVoterCard from '../../components/evs/EVSVoterCard';
+import EVSVoterCard from '../../components/evs_/EVSVoterCard';
 
 type Props = {}
 

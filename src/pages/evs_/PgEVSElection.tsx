@@ -8,8 +8,11 @@ import { Outlet, redirect, useLoaderData } from 'react-router'
 import moment from 'moment'
 import { TbEdit } from 'react-icons/tb'
 import { FaLayerGroup, FaNewspaper } from 'react-icons/fa6'
-import { GrGroup } from 'react-icons/gr'
 import SubNavLink from '../../components/evs/SubNavLink'
+import { RiCommunityFill } from 'react-icons/ri'
+import { MdNumbers } from 'react-icons/md'
+import { PiPerson } from 'react-icons/pi'
+import { GrGroup } from 'react-icons/gr'
 const { REACT_APP_API_URL } = import.meta.env;
  
 type Props = {}
@@ -17,13 +20,13 @@ type Props = {}
 
 // Delete Action for Phase
 export async function action({ params }) {
-  await Service.deleteElection(params?.electionId);
+  await Service.deleteElection(params.electionId);
   return redirect(`/evs/admins/elections`);
 }
 
 // Loader for Single Project
 export async function loader({ params }){
-  const data = await Service.fetchElection(params?.electionId)
+  const data = await Service.fetchElection(params.electionId)
   return { data }
 }
 
@@ -53,7 +56,7 @@ function PgEVSElection({}: Props) {
                 <div className="flex items-center space-x-2 font-semibold"> 
                     <span className="px-3 py-0.5 text-xs md:text-sm tracking-wider capitalize bg-primary rounded-md text-white">{data?.action}</span>
                     <div className="hidden md:flex w-1.5 h-1.5 rounded-full bg-slate-400"></div>
-                    <span className="tracking-wider text-xs md:text-base capitalize">{data?.voterData?.length} VOTERS</span>
+                    <span className="tracking-wider text-xs md:text-base capitalize">{data?.voterData.length} VOTERS</span>
                     <div className="hidden md:flex w-1.5 h-1.5 rounded-full bg-slate-400"></div>
                  </div>
                  <div className="flex items-center space-x-2 font-semibold">
@@ -69,9 +72,9 @@ function PgEVSElection({}: Props) {
                 <div className="flex md:flex-row flex-col md:items-center space-y-2 md:space-y-0 md:space-x-2"> 
                     {/* <span className="px-3 py-0.5 text-xs md:text-sm font-semibold tracking-wider capitalize bg-primary/20 rounded-md text-primary-dark/70">{data?.indexno}</span> */}
                     <div className="hidden md:flex w-1.5 h-1.5 rounded-full bg-slate-400"></div>
-                    <span className="tracking-wider text-xs md:text-sm capitalize font-semibold">START: {data?.startAt && moment(data?.startAt).format('LLL')?.toUpperCase()}</span>
+                    <span className="tracking-wider text-xs md:text-sm capitalize font-semibold">START: {data?.startAt && moment(data?.startAt).format('LLL').toUpperCase()}</span>
                     <div className="hidden md:flex w-1.5 h-1.5 rounded-full bg-slate-400"></div>
-                    <span className="tracking-wider text-xs md:text-sm capitalize font-semibold">END: {data?.endAt && moment(data?.endAt).format('LLL')?.toUpperCase()}</span>
+                    <span className="tracking-wider text-xs md:text-sm capitalize font-semibold">END: {data?.endAt && moment(data?.endAt).format('LLL').toUpperCase()}</span>
                 </div>
               </div>
               {/* <p className="text-gray-400 md:text-gray-500 text-xs md:text-sm font-noto">{data?.id}</p> */}

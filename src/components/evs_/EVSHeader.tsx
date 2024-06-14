@@ -1,6 +1,6 @@
 import moment from 'moment';
 import React, { useEffect, useState } from 'react'
-import Service from '../../utils/lasService'
+import Service from '../../utils/evsService'
 import { useNavigate } from 'react-router';
 
 type Props = {

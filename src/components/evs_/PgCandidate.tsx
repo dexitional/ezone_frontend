@@ -21,8 +21,8 @@ function PgCandidate() {
             <input type="search" placeholder="Search Register with keyword ..." className="w-full bg-transparent focus:ring-0 focus:outline-none" />
         </div> */}
             <div className="px-2 py-2 h-[31rem] bg-zinc-200/50 shadow-inner space-y-6 overflow-y-auto">
-                { data?.portfolios?.map((row:any) => (
-                  <div key={row?.id} className="px-2 py-2 flex-1 bg-white rounded space-y-2">
+                { data?.portfolios.map((row:any) => (
+                  <div key={row.id} className="px-2 py-2 flex-1 bg-white rounded space-y-2">
                     <h2 className="px-6 py-1 rounded text-xs md:text-lg text-center text-primary font-extrabold tracking-widest bg-slate-200/70">{row?.title?.toUpperCase()}</h2>
                     <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-2 place-content-start overflow-y-scroll">
                         { row?.candidates?.filter((m:any) => m.orderNo != 0)?.sort((a,b) => a.orderNo-b.orderNo).map((r:any) => (<CandidateCard key={r?.id} data={r} vtotal={data?.electors?.length} />))}

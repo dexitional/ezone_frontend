@@ -24,7 +24,7 @@ function CandidateCardNo({ data, showResult, winner, vtotal }: Props) {
                         <span className="px-0.5 tracking-wider font-bold">{data?.votes}</span>
                         <span className="p-0.5 px-1.5 text-sm md:text-base italic rounded border bg-red-100 tracking-wide">{ !isNaN(data?.votes/vtotal * 100) ? (data?.votes/vtotal * 100).toFixed(1) : 0 }%</span>
                     </div>
-                    { winner && <h3 className="px-2 w-fit rounded bg-green-600 text-xs md:text-sm print:text-sm text-white font-bold italic tracking-widest md:animate-ping print:animate-none">WINNER</h3>}
+                    { winner && <h3 className="px-2 w-fit rounded bg-green-600 text-xs md:text-sm text-white font-bold italic tracking-widest animate-ping">WINNER</h3>}
                 </div>
                 <div className="w-full flex items-center justify-between">
                 

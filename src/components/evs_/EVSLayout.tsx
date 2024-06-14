@@ -17,7 +17,7 @@ function EVSLayout({ children }: Props) {
   return (
    
     <div className="w-full h-screen flex flex-col">
-    <Header />
+    <Header user={user} logout={logout} />
     <main className="w-full flex flex-col overflow-y-scroll">
       <section>
         <div className={`${loading && 'overflow-hidden'} flex-1`}>

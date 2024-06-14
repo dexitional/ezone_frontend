@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
+import SubPageTitle from '../../components/evs/SubPageTitle'
 import { Form, redirect, useLoaderData, useNavigate } from 'react-router-dom'
 import Service from '../../utils/evsService'
 import moment from 'moment'
 import toast from 'react-hot-toast'
-import SubPageTitle from '../../components/evs/SubPageTitle'
 const { REACT_APP_API_URL } = import.meta.env;
 
 
@@ -22,6 +22,7 @@ export async function action({ request, params }){
        data.startAt = moment(data.startAt)
        data.endAt = moment(data.endAt)
        data.groupId = Number(data.groupId)
+       data.status = data.status == 1
        data.logo = logo
        if(!logo?.size) delete data.logo;
       
@@ -46,7 +47,6 @@ export async function loader({ params }){
    const id = params?.electionId || 0;
    if(id != 0)
      data = await Service.fetchElection(id)
-    console.log(data)
    return { data }
 }
 

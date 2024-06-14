@@ -2,6 +2,7 @@ import React from 'react'
 import Service from '../../utils/evsService'
 import { redirect, useLoaderData } from 'react-router';
 import { BsActivity } from 'react-icons/bs';
+import AISStudentCard from '../../components/ais/AISStudentCard';
 import EVSCandidateCard from '../../components/evs/EVSCandidateCard';
 
 type Props = {}
@@ -12,7 +13,7 @@ export async function action({ params }) {
 }
 
 export async function loader({ params }){
-   const data = await Service.fetchVotes(params?.electionId);
+   const data = await Service.fetchVotes(params.electionId);
    return { data }
 }
 
@@ -22,7 +23,7 @@ function PgEVSCandidates({}: Props) {
   return (
     <div className="flex w-full flex-1 flex-col items-center justify-center space-y-8 md:space-y-8 ">
        <div className="flex w-full flex-1 flex-col space-y-8 md:space-y-10 ">
-          { portfolios && portfolios?.map((row:any,i: number) => (
+          { portfolios && portfolios.map((row:any,i: number) => (
             <EVSCandidateCard key={row?.title} title={row?.title?.toUpperCase()} data={row?.candidates} />
           ))}
           { !portfolios.length ? (

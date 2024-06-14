@@ -16,7 +16,7 @@ type Props = {
 function PgElectionCard({ data }: Props) {
   const navigate = useNavigate()
   const { user } = useUserStore.getState();
-  const isVoter = !!(data?.voterData?.find((r:any) => r?.tag?.toString()?.toLowerCase() == user?.user?.tag?.toString()?.toLowerCase()))
+  const isVoter = !!(data.voterData.find((r:any) => r?.tag?.toLowerCase() == user?.user?.tag?.toLowerCase()))
 
   return (
     <div className='space-y-2'>

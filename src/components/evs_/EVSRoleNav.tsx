@@ -3,7 +3,7 @@ import { Menu } from '@headlessui/react'
 import { CgMenuGridO } from "react-icons/cg";
 import { FaChartBar } from 'react-icons/fa';
 import { GrDashboard } from 'react-icons/gr';
-import EVSNavItem from '../evs/EVSNavItem';
+import AISNavItem from '../evs/EVSNavItem';
 type Props = {
   user: any;
 }
@@ -25,8 +25,8 @@ function EVSRoleNav({ user }: Props) {
         {/* Mobile Navigation Slide */}
         <Menu.Items className="z-20 absolute top-13 left-0 min-h-max w-full border-b-4 border-blue-100/90 bg-blue-100 backdrop-blur-sm backdrop-opacity-70 bg-opacity-70">
           <div className="py-4 px-6 flex-1 flex flex-col space-y-1 md:space-y-4">
-           {['ums techlead','ums admin'].includes(aisRole?.role_name?.toLowerCase()) && <Menu.Item as={EVSNavItem} title="Reports" url="System Reports" Icon={FaChartBar}></Menu.Item>}
-            <Menu.Item as={EVSNavItem} title="Election Module" url="elections" Icon={GrDashboard}></Menu.Item>
+           {['ums techlead','ums admin'].includes(aisRole?.role_name?.toLowerCase()) && <Menu.Item as={AISNavItem} title="Reports" url="System Reports" Icon={FaChartBar}></Menu.Item>}
+            <Menu.Item as={AISNavItem} title="Election Module" url="elections" Icon={GrDashboard}></Menu.Item>
           </div>
         </Menu.Items>
     </Menu>

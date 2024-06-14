@@ -14,6 +14,7 @@ function PgPublic() {
   const [chartData, setChartData] = useState(data?.portfolios);
   const [pageview, setPageview] = useState(0);
 
+  
   const getChartData = (index) => {
     var data = [["Candidate", "Votes"]];
     const dm:any = chartData?.find((r,i) => i == index);

@@ -98,8 +98,8 @@ function PgVoting() {
                   <div key={row.id} className="px-2 py-2 flex-1 bg-white rounded space-y-2">
                     <h2 className="relative px-6 py-1 rounded text-xs md:text-lg text-center text-primary font-extrabold tracking-widest bg-slate-200/70">
                       <span>{row?.title?.toUpperCase()}</span>
-                      { row?.candidates?.find((m:any) => m.orderNo == 0) ? <button onClick={(e)=> choose(e,row?.id,(row?.candidates?.find((m:any) => m.orderNo == 0)?.id))} className="absolute right-4 top-1/2 -translate-y-[50%] px-3 py-0.5 bg-red-100 border-2 border-red-300 text-sm">SKIP</button> : null }
-                      </h2>
+                      <button onClick={(e)=> choose(e,row?.id,(row?.candidates?.find((m:any) => m.orderNo == 0)?.id))} className="absolute right-4 top-1/2 -translate-y-[50%] px-3 py-0.5 bg-red-100 border-2 border-red-300 text-sm">SKIP</button>
+                    </h2>
                     <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-2 place-content-start overflow-y-scroll">
                         { row?.candidates?.sort((a,b) => a.orderNo - b.orderNo)?.filter((m:any) => m.orderNo != 0)?.map((r:any, i: number) => {
                            if(chosenIcon(row?.id,r?.id) ) return <button key={r?.id} onClick={(e)=> choose(e,row?.id,r?.id)}><VotingCard key={r?.id} data={r} chosen /></button>

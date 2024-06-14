@@ -3,6 +3,7 @@ import ControlCard from './ControlCard'
 import Service from '../../utils/evsService'
 import { useLoaderData, useNavigate } from 'react-router';
 import ControlActionCard from './ControlActionCard';
+import toast from 'react-hot-toast';
 
 export async function loader({ params }){
   const data = await Service.fetchElection(params.electionId);
@@ -14,9 +15,8 @@ function PgAdminControl() {
   const navigate = useNavigate();
 	
   const onCheckChange = async (e) => {
-    const value = e.target.checked == true ? 1:0;
-    console.log({ [e.target.name]: value });
-    const resp = await Service.updateElection(data?.id, { [e.target.name]: value })
+    const value = e.target.checked;
+    const resp = await Service.updateElection(data?.id, { [e.target.name]: e.target.checked })
     //if(resp) navigate(0)
   }
 
@@ -35,6 +35,7 @@ function PgAdminControl() {
     const tag = window.prompt("Please provide Administrator User Identification!");
     if(tag && tag != ''){
       const resp = await Service.updateAdmin(data?.id,tag)
+   
     }
     //if(resp) navigate(0)
   }

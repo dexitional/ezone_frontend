@@ -1,5 +1,9 @@
 import React from 'react'
+import { FaHome } from 'react-icons/fa'
+import { GiHamburgerMenu } from 'react-icons/gi'
+import { ImHome, ImPlus } from 'react-icons/im'
 import { IoChevronBack } from 'react-icons/io5'
+import { MdDashboard } from 'react-icons/md'
 import { Link, useNavigate } from 'react-router-dom'
 
 type Props = {
@@ -15,8 +19,8 @@ function SubPageTitle({ title, page, link }: Props) {
   return (
     <div className="flex items-center justify-between">
         <div className="flex flex-col md:flex-row md:items-center md:space-x-6 md:space-y-0 space-y-2">
-            <h1 className="py-0.5 px-2 w-fit bg-slate-100 border-r-8 border-blue-950/70 rounded-md text-[0.65rem] md:text-xs font-semibold text-blue-950/70 uppercase">{page}</h1>
-            <h1 className="text-[0.6rem] md:text-lg font-medium text-blue-950/70 uppercase tracking-wider">{title}</h1>
+            <h1 className="py-0.5 px-2 w-fit bg-slate-100 border-r-8 border-primary-accent/70 rounded-md text-[0.65rem] md:text-xs font-semibold text-primary-accent/70 uppercase">{page}</h1>
+            <h1 className="text-[0.6rem] md:text-lg font-medium text-primary-accent/80 uppercase tracking-wider">{title}</h1>
         </div>
         
         <div className="flex items-center space-x-2">

@@ -2,21 +2,19 @@ import React from 'react'
 import ControlCard from './ControlCard'
 import Service from '../../utils/evsService'
 import { useLoaderData, useNavigate } from 'react-router';
-import ControlActionCard from './ControlActionCard';
 
 export async function loader({ params }){
   const data = await Service.fetchElection(params.electionId);
   return {  data }
 }
 
-function PgAdminControl() {
+function PgControl() {
   const { data }:any = useLoaderData()
   const navigate = useNavigate();
 	
   const onCheckChange = async (e) => {
-    const value = e.target.checked == true ? 1:0;
-    console.log({ [e.target.name]: value });
-    const resp = await Service.updateElection(data?.id, { [e.target.name]: value })
+    const value = e.target.checked;
+    const resp = await Service.updateElection(data?.id, { [e.target.name]: e.target.checked })
     //if(resp) navigate(0)
   }
 
@@ -24,24 +22,6 @@ function PgAdminControl() {
     const value = e.target.checked;
     const resp = await Service.updateElection(data?.id, { [e.target.name]: e.target.value })
    //if(resp) navigate(0)
-  }
-
-  const resetElection = async (e) => {
-    const ok = window.confirm("Reset Election?");
-    if(ok) await Service.resetElection(data?.id);
-  }
-
-  const updateAdmin = async (e) => {
-    const tag = window.prompt("Please provide Administrator User Identification!");
-    if(tag && tag != ''){
-      const resp = await Service.updateAdmin(data?.id,tag)
-    }
-    //if(resp) navigate(0)
-  }
-
-  const stageVoters = async (e) => {
-    const ok = window.confirm("Stage Voters For Election?");
-    if(ok) await Service.stageVoters(data?.id);
   }
 
   return (
@@ -59,7 +39,7 @@ function PgAdminControl() {
           </div>
         </h1>
         <div className="py-4 px-2 rounded shadow-inner shadow-gray-500/20 bg-white space-y-4">
-        <div className="px-2 py-2 bg-zinc-200/50 shadow-inner space-y-2">
+        <div className="px-2 py-2 bg-zinc-200/50 shadow-inner">
             <div className="px-2 py-2 bg-white rounded">
               <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-2 place-content-start overflow-y-scroll">
                   <ControlCard onChange={onCheckChange} title="PUBLIC MONITOR" action="allowMonitor" desc="Percentage statistics in realtime" data={data} />
@@ -72,17 +52,10 @@ function PgAdminControl() {
                   <ControlCard onChange={onCheckChange} title="AUTO-STOP PROCESS" action="autoStop" desc="Automatically End Election on Close time" data={data} />
               </div>
             </div>
-            <div className="px-2 py-2 bg-white rounded">
-              <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-2 place-content-start overflow-y-scroll">
-                  <ControlActionCard  onClick={resetElection} title="RESET ELECTION" tag="ACTION" desc="Reset active election & candidates votes" />
-                  <ControlActionCard  onClick={updateAdmin} title="UPDATE ADMIN USER" tag="ACTION" desc="Add or Remove EC or Admin Access" />
-                  <ControlActionCard  onClick={stageVoters} title="STAGE VOTERS" tag="ACTION" desc="Add or Remove EC or Admin Access" />
-              </div>
-            </div>
         </div>
         </div>
     </div>
   )
 }
 
-export default PgAdminControl
+export default PgControl
