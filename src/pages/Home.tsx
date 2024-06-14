@@ -36,7 +36,7 @@ function Home() {
              <h1 className="px-6 md:px-0 text-zinc-400 font-medium md:font-semibold md:text-xl">Browse By Apps</h1>
              <div className="p-3 md:p-6 w-full bg-slate-50 grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-6">
                  
-                  { evsRole &&
+                  { (evsRole || [4].includes(parseInt(user?.user?.group_id))) &&
                   <AppCard 
                       title="Electa Voting System"
                       desc="Elect leaders, decide on issues by voting and referendum." 
