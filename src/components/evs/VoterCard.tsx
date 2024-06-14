@@ -16,6 +16,7 @@ function VoterCard({ data, vmask, isAdmin }: Props) {
         <div className="flex-1 flex flex-col items-start justify-start">
             <h3 className="text-[0.68rem] md:text-[0.87rem] text-primary/90 md:text-primary/90 font-bold md:font-bold uppercase">{data?.name}</h3>
             <h3 className="text-xs md:text-sm text-gray-600 font-medium italic">{data?.mail} </h3> 
+            { isAdmin && data?.phone ? <h3 className="text-xs md:text-sm text-gray-600 font-medium italic">PIN: {data?.pin}</h3> : null }
             { isAdmin && data?.phone ? <h3 className="text-xs md:text-sm text-gray-600 font-medium italic">{data?.phone}</h3> : null }
             <div className="w-full flex items-center justify-between">
               <h3 className="w-fit text-xs text-gray-500 font-bold tracking-widest">{data?.tag}</h3>

@@ -26,7 +26,7 @@ function PgRegister() {
           <span className="text-white">VOTERS REGISTER</span>
           <div className="flex items-center space-x-2">
              <span className="p-0.5 px-2 rounded bg-purple-50 text-base text-primary font-extrabold tracking-wider">{data?.voterData?.length}</span>
-             {/* <button onClick={sendPins} className="p-1 px-2 rounded text-sm font-bold bg-primary-accent tracking-wider">SEND PINS</button> */}
+             <button onClick={sendPins} className="p-1 px-2 rounded text-sm font-bold bg-primary-accent tracking-wider">SEND PINS</button>
           </div>
         </h1>
         <div className="py-4 px-2 rounded shadow-inner shadow-gray-500/20 bg-white space-y-4">
