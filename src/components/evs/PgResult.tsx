@@ -38,7 +38,7 @@ function PgResult() {
                   <span>{!isNaN(data?.election?.voterData?.length - data?.electors?.length) ? (data?.election?.voterData?.length - data?.electors?.length) : 0}</span>
                 </div>
             </div>
-            <div className="px-2 py-2 h-[31rem] bg-zinc-200/50 shadow-inner space-y-3 overflow-y-auto">
+            <div className="px-2 py-2 h-[31rem] print:h-full bg-zinc-200/50 shadow-inner space-y-3 overflow-y-auto">
                 
                 { data?.portfolios?.map((row:any) => {
                   let winValue = 0;
