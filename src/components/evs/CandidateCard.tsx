@@ -18,7 +18,7 @@ function CandidateCard({ data, showResult, winner, vtotal }: Props) {
             </div>
             <div className="flex-1 flex flex-col space-y-1.5">
                 <div className={ showResult ? `block`: `hidden`}>
-                    <div className="my-2 px-1 py-1 rounded border-2 border-blue-950/20 text-sm md:text-base text-blue-950/80 md:text-blue-950/80 bg-white font-bold md:font-bold space-x-2">
+                    <div className="my-2 px-4 py-1 w-fit rounded-full border-2 border-blue-950/20 text-sm md:text-base text-blue-950/80 md:text-blue-950/80 bg-white font-bold md:font-bold space-x-2">
                         <span className="px-0.5 tracking-wider font-bold">{data?.votes}</span>
                         <span className="p-0.5 px-1.5 text-sm md:text-base italic rounded border bg-red-100 tracking-wide">{ !isNaN(data?.votes/vtotal * 100) ? (data?.votes/vtotal * 100).toFixed(1) : 0 }%</span>
                     </div>

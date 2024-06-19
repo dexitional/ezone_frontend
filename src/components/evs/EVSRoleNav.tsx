@@ -15,9 +15,9 @@ function EVSRoleNav({ user }: Props) {
     <Menu as='div' className="relative">
         <div className="px-4 p-2 md:hidden flex items-center justify-between border-b-2 border-slate-200/50 bg-slate-100 text-gray-400">
          
-          <div className="flex items-center">
+          {/* <div className="flex items-center">
              <span className="px-3 p-1 text-sm tracking-widest font-bold text-primary/60 bg-white border-2 border-primary/60 rounded-md"><span className="text-primary/80">ELECTA </span>&reg;</span>
-          </div>
+          </div> */}
           <Menu.Button className="p-0.5 bg-white border shadow-sm rounded-md">
             <CgMenuGridO className="h-7 w-7 text-gray-500/70"/>
           </Menu.Button>

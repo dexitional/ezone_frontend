@@ -13,13 +13,7 @@ function EVSHeader({ data }: Props) {
   const [ stop, setStop ] = useState(moment().isSameOrBefore(data.endAt))
   const navigate = useNavigate()
   const loadTime = () => {
-   // setInterval(() => setPeriod(moment().format("HH:mm:ss")), 1000)
     setInterval(async() => {
-      // const time = moment(data.endAt).diff(moment(),"minutes");
-      // const hh = Math.floor(time/60);
-      // const mm =  Math.round((time%60));
-      // const ss = Math.round(((time%60)/60));
-
       const time = moment(data.endAt).diff(moment(),"seconds");
       const time1 = moment(data.endAt).diff(moment(),"minutes");
       let hh = Math.floor(time/3600);

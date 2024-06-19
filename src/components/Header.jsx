@@ -1,5 +1,5 @@
 import React from 'react'
-import Logo from '../assets/img/logo.png'
+import Logo from '../assets/img/logo_white.png'
 import { useNavigate } from 'react-router';
 import { MdLogout, MdSpaceDashboard } from 'react-icons/md';
 import { Link } from 'react-router-dom';
@@ -20,15 +20,15 @@ function Header({ user,logout }) {
     <header className="w-full">
         <div className="w-full bg-primary">
             <div className="px-3 md:px-0 md:mx-auto w-full h-14 md:max-w-6xl flex items-center">
-                <img src={Logo} alt="Logo" className="h-6 md:h-12" />
-                <div className="flex-1 flex items-center justify-end space-x-2">
-                    <img src={user?.photo ?? Logo} alt="" className="h-8 w-8 rounded-full object-cover bg-yellow-100/50 backdrop-blur-sm" />
-                    <div className="hidden md:flex px-3 py-1 rounded-md border border-gray-200  bg-primary/20 bg-opacity-50 backdrop-blur-sm text-white font-semibold capitalize">{user?.user?.fname?.toLowerCase()} { user?.user?.mname && user?.user?.mname?.toLowerCase()+' '}{user?.user?.lname?.toLowerCase()}</div>
-                    <div className="p-1 rounded-md border md:border flex items-center space-x-1">
-                        <Link to="/dash" className={`bg-slate-200 h-6 w-6 rounded-l border flex items-center justify-center`}>
+                <img src={Logo} alt="Logo" className="h-6 md:h-[2.0rem]" />
+                <div className="flex-1 flex items-center justify-end space-x-1">
+                    { user?.photo && <img src={user?.photo ?? Logo} alt="" className="h-8 w-8 rounded-full object-cover bg-yellow-100/50 backdrop-blur-sm" /> }
+                    <div className="hidden md:flex px-3 py-1 rounded-l-full rounded-r-md border border-gray-200  bg-primary/20 bg-opacity-50 backdrop-blur-sm text-white font-medium capitalize">{user?.user?.fname?.toLowerCase()} { user?.user?.mname && user?.user?.mname?.toLowerCase()+' '}{user?.user?.lname?.toLowerCase()}</div>
+                    <div className="p-1 rounded-md rounded-r-full border md:border flex items-center space-x-1">
+                        <Link to="/dash" className={`bg-slate-200 px-1 h-6 w-8 border flex items-center justify-center`}>
                             <MdSpaceDashboard className="h-5 w-5 text-primary-dark" />
                         </Link>
-                        <button onClick={signout} className={`bg-slate-50 h-6 w-6 rounded-r border flex items-center justify-center`}>
+                        <button onClick={signout} className={`bg-slate-50 px-1 h-6 w-8 rounded-r-full border flex items-center justify-center`}>
                             <MdLogout className="h-5 w-5 text-primary-dark" />
                         </button>
                     </div>
