@@ -91,6 +91,14 @@ function PgEVSElectionForm({}: Props) {
                       </select>
                   </label>
                   <label className="flex flex-col space-y-2">
+                      <span className="text-sm md:text-base text-gray-500 font-medium">Selection Mode</span>
+                      <select arial-label="selectMode" name="selectMode" defaultValue={data?.selectMode} className="focus:ring-0 border focus:border-slate-300  border-primary-dark/10 bg-primary-dark/5 text-sm md:text-base text-gray-500 rounded-md">
+                        <option selected disabled>-- Choose --</option>
+                        <option value="SINGLE">SINGLE</option>
+                        <option value="MULTIPLE">MULTIPLE</option>
+                      </select>
+                  </label>
+                  <label className="flex flex-col space-y-2">
                       <span className="text-sm md:text-base text-gray-500 font-medium">Electoral Group</span>
                       <select arial-label="groupId" name="groupId" defaultValue={Number(data?.groupId)} className="focus:ring-0 border focus:border-slate-300  border-primary-dark/10 bg-primary-dark/5 text-sm md:text-base text-gray-500 rounded-md">
                         <option selected disabled>-- Choose --</option>

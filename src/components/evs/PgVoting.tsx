@@ -16,6 +16,7 @@ function PgVoting() {
   const { data }:any = useLoaderData();
   const user = useUserStore.getState().user
   const [ voter,setVoter ] = useState({})
+  const [ portCount,setPortCount ] = useState(data.portfolios.map(r => `${r.id}:${r.selectCount}` ) || [])
 	const [ ip,setIp ] = useState(null)
 	const [ location,setLocation ] = useState('')
 	const [ pageview,setPageview ] = useState<number>(0);
@@ -23,12 +24,37 @@ function PgVoting() {
 	
 	const choose = (e,pid,cid) => {
 		e.preventDefault();
-    setVoter({ ...voter,[pid]:cid })
-		setTimeout(() => changeView('next'),500)
+    const portLimit = portCount?.find((r) => {
+      const pi = r.split(':');
+      return pi[0] == pid;
+    })
+    const limit = parseInt(portLimit.split(":")[1])
+   
+    let pidVoter = voter[pid] ? voter[pid]: [];
+    console.log(portLimit,limit,pidVoter);
+    
+    if(pidVoter?.length < limit) {
+        pidVoter.push(cid)
+        setVoter({ ...voter,[pid]:pidVoter })
+        if(pidVoter.length == limit) setTimeout(() => changeView('next'),200)
+       
+    } else {
+      //pidVoter.push(cid)
+      setVoter({ ...voter,[pid]:pidVoter })
+		  setTimeout(() => changeView('next'),500)
+    }
+    console.log(portLimit,limit,pidVoter);
+
+
+    
 	}
 
 	const chosenIcon = (pid,cid) => {
-    return voter[pid] == cid
+    let pidVoter = voter[pid];
+    console.log(pidVoter)
+    let isExist = pidVoter?.find( r => r == cid)
+    return isExist;
+    //return voter[pid] == cid
 	}
 
 	const changeView = (action) => {
@@ -54,7 +80,12 @@ function PgVoting() {
 	
 	const submitVote = async (e) => {
 		e.preventDefault();
-		const mdata = { id:data?.election?.id, tag:user?.user?.tag, votes:voter && Object.values(voter), ip, location }
+    let votes:any = [];
+    let voters:any = Object.values(voter);
+    for(let vs of voters){
+        votes = [ ...votes,...vs ];
+    }
+    const mdata = { id:data?.election?.id, tag:user?.user?.tag, votes:votes, ip, location }
 		const ok = window.confirm("SUBMIT VOTES FOR SELECTED CANDIDATES ?")
 		if(ok){
 		  if(allowSubmit()){
@@ -72,10 +103,28 @@ function PgVoting() {
 		    setLocation(`Country: ${res.data.country_name}, Coordinates: [ Lat ${res.data.latitude}, Long ${res.data.longitude} ] ${res.data?.city && res.data?.city != 'null' && ', City: '+res.data?.city}`)
   },[ip])
 
+  const setupPortCount = () =>{
+    if(data?.portfolios?.length > 0){
+      for(let p of data?.portfolios){
+        console.log(p)
+        setPortCount({ ... portCount, [p.id]: p.selectCount })
+      }
+      console.log(portCount)
+    }
+  }
+
 
 	useEffect(() => {
 	  getLocation();
+    //setupPortCount();
+    console.log(portCount)
+    console.log(data)
 	},[]);
+  
+  useEffect(() => {
+	 console.log(voter)
+	},[voter]);
+  
 
 
   return (

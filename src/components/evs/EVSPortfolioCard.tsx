@@ -20,17 +20,19 @@ function EVSPortfolioCard({ title,data }: Props) {
       </div>
     </h1>
     <div className="w-full rounded-lg shadow-md text-xs overflow-x-scroll md:overflow-hidden">
-          <div className="px-3 py-2 md:grid bg-primary/10 text-primary-dark/70 font-bold grid grid-cols-7 tracking-wider">
+          <div className="px-3 py-2 md:grid bg-primary/10 text-primary-dark/70 font-bold grid grid-cols-8 tracking-wider">
             <span className="hidden md:grid justify-self-center">NO</span>
             <span className="hidden md:grid col-span-3">TITLE</span>
+            <span className="hidden md:grid justify-self-center">SELECTIONS</span>
             <span className="hidden md:grid justify-self-center">CANDIDATES</span>
             <span className="hidden md:grid justify-self-center">STATUS</span>
             <span className="hidden md:grid justify-self-center">ACTION</span>
           </div>
           { data?.map((row:any, i:number) => (
-            <div className="px-3 py-2 border-b grid md:grid-cols-7 gap-y-3 font-medium text-xs text-primary/80">
+            <div className="px-3 py-2 border-b grid md:grid-cols-8 gap-y-3 font-medium text-xs text-primary/80">
               <span className="justify-self-center"><span className="md:hidden text-primary-dark text-[0.65rem]">CANDIDATE NO: </span>{i+1}</span>
               <span className="md:col-span-3 font-medium justify-self-center md:justify-self-start"><span className="md:hidden text-primary-dark text-[0.65rem]">TITLE:&nbsp; </span>{row?.title?.toUpperCase()} </span>
+              <span className="justify-self-center text-sm"><span className="md:hidden text-primary-dark text-[0.65rem]">NUMBER OF CHOICES:&nbsp; </span>{row?.selectCount }</span>
               <span className="justify-self-center text-sm"><span className="md:hidden text-primary-dark text-[0.65rem]">CANDIDATES:&nbsp; </span>{(row?._count?.candidate > 0 ? row?._count?.candidate - 1 : 0) || 0 }</span>
               <span className="justify-self-center"><span className="md:hidden text-primary-dark text-[0.65rem]">STATUS:&nbsp; </span>{row.status ? 'ENABLED':'DISABLED'}</span>
               <span className="flex md:flex-row flex-col items-center md:justify-center space-y-3 md:space-y-0 md:space-x-2">

@@ -10,6 +10,7 @@ export async function action({ request, params }){
   const formData = await request.formData()
   let data = Object.fromEntries(formData)
       data.electionId = Number(params.electionId);
+      data.selectCount = Number(data.selectCount);
       data.status = data.status == 1
     
   let resp;
@@ -50,6 +51,10 @@ function PgEVSPortfolioForm({}: Props) {
                       <label className="flex flex-col space-y-2">
                           <span className="text-sm md:text-base text-gray-500 font-medium">Portfolio title</span>
                           <input arial-label="title" name="title" defaultValue={data?.title} required className="focus:ring-0 border focus:border-slate-300  border-primary-dark/10 bg-primary-dark/5 text-sm md:text-base text-gray-500 rounded-md uppercase" />
+                      </label>
+                      <label className="flex flex-col space-y-2">
+                          <span className="text-sm md:text-base text-gray-500 font-medium">Selections</span>
+                          <input arial-label="selectCount" name="selectCount" defaultValue={data?.selectCount} required className="focus:ring-0 border focus:border-slate-300  border-primary-dark/10 bg-primary-dark/5 text-sm md:text-base text-gray-500 rounded-md uppercase" />
                       </label>
                       <label className="flex flex-col space-y-2">
                           <span className="text-sm md:text-base text-gray-500 font-medium">Portfolio Status</span>
