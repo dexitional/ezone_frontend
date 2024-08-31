@@ -91,6 +91,14 @@ function PgEVSElectionForm({}: Props) {
                       </select>
                   </label>
                   <label className="flex flex-col space-y-2">
+                      <span className="text-sm md:text-base text-gray-500 font-medium">Selection Mode</span>
+                      <select arial-label="selectMode" name="selectMode" defaultValue={data?.selectMode} className="focus:ring-0 border focus:border-slate-300  border-primary-dark/10 bg-primary-dark/5 text-sm md:text-base text-gray-500 rounded-md">
+                        <option selected disabled>-- Choose --</option>
+                        <option value="SINGLE">SINGLE</option>
+                        <option value="MULTIPLE">MULTIPLE</option>
+                      </select>
+                  </label>
+                  <label className="flex flex-col space-y-2">
                       <span className="text-sm md:text-base text-gray-500 font-medium">Electoral Group</span>
                       <select arial-label="groupId" name="groupId" defaultValue={Number(data?.groupId)} className="focus:ring-0 border focus:border-slate-300  border-primary-dark/10 bg-primary-dark/5 text-sm md:text-base text-gray-500 rounded-md">
                         <option selected disabled>-- Choose --</option>
@@ -123,14 +131,7 @@ function PgEVSElectionForm({}: Props) {
                <div className="md:pl-6 space-y-4">
                   <label className="flex flex-col space-y-2">
                       <span className="text-sm md:text-base text-gray-500 font-medium">Voter Register</span>
-                      <textarea arial-label="voterList" name="voterList" defaultValue={JSON.stringify(data?.voterList)} rows={10} className="focus:ring-0 border focus:border-slate-300  border-primary-dark/10 bg-primary-dark/5 text-sm md:text-xs font-semibold text-gray-500 rounded-md tracking-widest leading-8"></textarea>
-                  </label>
-                 
-               </div>  
-               <div className="md:pl-6 space-y-4">
-                  <label className="flex flex-col space-y-2">
-                      <span className="text-sm md:text-base text-gray-500 font-medium">Election Admins</span>
-                      <textarea arial-label="admins" name="admins" defaultValue={JSON.stringify(data?.admins)} rows={4} className="focus:ring-0 border focus:border-slate-300  border-primary-dark/10 bg-primary-dark/5 text-sm md:text-xs font-semibold text-gray-500 rounded-md tracking-widest leading-8"></textarea>
+                      <textarea arial-label="voterList" name="voterList" defaultValue={JSON.stringify(data?.voterList)} rows={18} className="focus:ring-0 border focus:border-slate-300  border-primary-dark/10 bg-primary-dark/5 text-sm md:text-xs font-semibold text-gray-500 rounded-md tracking-widest leading-8"></textarea>
                   </label>
                  
                </div>  
