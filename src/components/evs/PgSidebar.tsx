@@ -13,7 +13,6 @@ type Props = {
 function PgSidebar({ data }: Props) {
   const { isAdmin } = data;
   const [ dm, setDm ] = useState<any>(data);
-  console.log(data)
   const loadData = () => {
     setInterval( async() => {
       const vs = await Service.fetchElection(data?.id);
