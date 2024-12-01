@@ -130,7 +130,10 @@ function PgVoting() {
     <div className="py-3 px-3 flex-1 h-full rounded bg-[#f1f1f1]/30 shadow-inner shadow-gray-500/30 space-y-6">
         <h1 className="px-4 py-2.5 flex items-center justify-between text-lg md:text-xl rounded bg-primary/80 font-semibold text-white">
           <span className="text-white">VOTING SESSION</span>
-          <button onClick={() => setPageview(0)} className="p-0.5 px-2 rounded bg-purple-50 text-base text-primary font-bold tracking-wider">START AGAIN</button>
+          <div className="flex flex-col md:flex-row md:space-x-2 md:space-y-0 space-y-2">
+             {pageview != data?.portfolios?.length-1 && <button onClick={() => setPageview(Math.min(pageview+1,data?.portfolios?.length-1))} className="p-0.5 px-2 rounded bg-green-100 text-base text-primary font-bold tracking-wider">NEXT</button>}
+             <button onClick={() => setPageview(0)} className="p-0.5 px-2 rounded bg-purple-50 text-base text-primary font-bold tracking-wider">RESTART</button>
+          </div>
         </h1>
         <div className="py-4 px-2 rounded shadow-inner shadow-gray-500/20 bg-white space-y-4">
         <div className="pt-2 flex items-center justify-center space-x-2">

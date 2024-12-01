@@ -3,6 +3,7 @@ import { useLoaderData } from 'react-router';
 import { useUserStore } from '../../utils/authService';
 import Service from '../../utils/evsService';
 import VoterCard from './VoterCard';
+import { Link } from 'react-router-dom';
 
 export async function loader({ params }){
   const data = await Service.fetchElection(params.electionId);
@@ -26,6 +27,7 @@ function PgRegister() {
           <span className="text-white">VOTERS REGISTER</span>
           <div className="flex items-center space-x-2">
              <span className="p-0.5 px-2 rounded bg-purple-50 text-base text-primary font-extrabold tracking-wider">{data?.voterData?.length}</span>
+             { isAdmin ? <Link to={`/addvoter`} className="p-1 px-2 rounded text-sm font-bold bg-primary-accent tracking-wider">SEND PINS</Link> : null }
              { isAdmin ? <button onClick={sendPins} className="p-1 px-2 rounded text-sm font-bold bg-primary-accent tracking-wider">SEND PINS</button> : null }
           </div>
         </h1>
