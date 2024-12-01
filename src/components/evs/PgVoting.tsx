@@ -141,7 +141,7 @@ function PgVoting() {
                 <div className={`h-4 w-4 md:h-6 md:w-6 rounded-full border-4 ${pageview == i ? 'bg-primary/80':'bg-slate-100'} `}></div>
               )}
             </div>
-            <div className="px-2 py-2 h-[35rem] bg-zinc-200/50 shadow-inner space-y-3 overflow-y-auto">
+            <div className="px-2 py-2 md:h-[35rem] bg-zinc-200/50 shadow-inner space-y-3 overflow-y-auto">
                 
                 { data?.portfolios.map((row:any, i: number) => 
                  pageview == i ?
